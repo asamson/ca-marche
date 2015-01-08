@@ -26,8 +26,8 @@ Vec2D vecPos;
 
 
 void setup() {
-  size(640, 480, OPENGL);
-  // smooth();
+  size(1020, 620, OPENGL);
+   smooth();
 
   //initialize kinect
   context = new SimpleOpenNI(this);
@@ -65,7 +65,7 @@ void addParticle() {
 
 void draw() {
 
-  background(150);
+  background(230,230,200);
   noStroke();
   fill(40);
   if (physics.particles.size() < NUM_PARTICLES) {
@@ -91,7 +91,7 @@ void draw() {
       //   println(com.z);
       context.convertRealWorldToProjective(com, com2d);
       // println(com2d.x, com2d.y);
-      text(Integer.toString(userList[i]), com2d.x, com2d.y);
+     // text(Integer.toString(userList[i]), com2d.x, com2d.y);
 
       playerID = userList[i];
       println("player is " + playerID + "or" + userList[i]);
@@ -146,11 +146,11 @@ void draw() {
   
         float pDistancer = sqrt(sq(vecPos.x-p.x)+sq(vecPos.y-p.y));
     if (pDistancer <= 300) {
-        fill(255, 70+int((map(pDistancer, 300, 0, 0, 175))));
+        fill(255,0,0, 70+int((map(pDistancer, 300, 0, 0, 175))));
         ellipse(p.x, p.y, 30-(map(pDistancer, 300, 0, 0, 25)), 30-(map(pDistancer, 300, 0, 0, 25)));
     }
     else{
-          fill(255, 70);
+          fill(255,0,0, 70);
       ellipse(p.x, p.y, 30, 30);
     }
     for (VerletParticle2D f : physics.particles) {
@@ -166,7 +166,7 @@ void draw() {
         if (fDistancer <= 200 && pDistancer <= 200) {
           float sDistancer = sqrt(sq(p.x-f.x)+sq(p.y-f.y));
           if(sDistancer <=50){
-            stroke(255, 100);
+            stroke(255,0,0, 100);
         strokeWeight(1);
             line(p.x, p.y, f.x, f.y);
           }
